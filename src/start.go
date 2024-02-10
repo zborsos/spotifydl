@@ -3,10 +3,11 @@ package spotifydl
 import (
 	"context"
 	"fmt"
-	"github.com/zmb3/spotify/v2"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/zmb3/spotify/v2"
 )
 
 // DownloadPlaylist Start initializes complete program
@@ -19,7 +20,8 @@ func DownloadPlaylist(ctx context.Context, pid string) {
 
 	trackListJSON, err := cli.UserClient.GetPlaylistTracks(ctx, playlistID)
 	if err != nil {
-		fmt.Println("Playlist not found!")
+		fmt.Println("PlaylistID: ", playlistID)
+		fmt.Println("Playlist not found!\n ", err)
 		os.Exit(1)
 	}
 	for _, val := range trackListJSON.Tracks {
